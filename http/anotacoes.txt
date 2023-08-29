@@ -1,0 +1,16 @@
+npm init -y
+npm i nodemon -D
+
+Pra instalar em outra máquina só vai precisar no "npm install" ou "npm i" que vai pegar do package.json logo que a pasta
+node_modules está no gitignote
+
+No package.json tem:
+"scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+
+  Então quando eu digitar "npm start" vai rodar o server.js
+
+  Alterei para  "start": "nodemon server.js" pra ele rodar com nodemon pra que as atualizações reflitam automaticamente e eu não
+  precise rodar "node" ou "npm start" toda hora. Nodemon deve ser retirado do "start" em produção
