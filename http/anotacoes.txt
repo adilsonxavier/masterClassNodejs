@@ -14,3 +14,7 @@ No package.json tem:
 
   Alterei para  "start": "nodemon server.js" pra ele rodar com nodemon pra que as atualizações reflitam automaticamente e eu não
   precise rodar "node" ou "npm start" toda hora. Nodemon deve ser retirado do "start" em produção
+
+fetch("http://localhost:5000").then((data) => {data.json()}).then((data) => console.log(data))
+Da forma acima vai parar no "(data) => {data.json()}" e não vai seguir em frente .
+Pra ir pro segundo then, ou tiro as chaves ou deixo "(data) => { return data.json()}"

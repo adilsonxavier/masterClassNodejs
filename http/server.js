@@ -1,6 +1,7 @@
 const http = require("http")
 const fs = require("fs")
 const path = require("path")
+const data = require("./api/urls.json")
 
 // http.createServer((req, res) => {
 //     res.write("oi tito 1607")
@@ -20,20 +21,23 @@ const path = require("path")
 // }).listen(5000, () => { console.log("running") })
 
 http.createServer((req, res) => {
+
+     res.writeHead(200,{"Access-Control-Allow-Origin":"*"})
     if (req.url === "/") { 
        fs.readFile(
          path.join(__dirname, "public","index.html"), //=> primeiro argumento de readFile
          // A constante __dirname é nativa e não precisa importar
          // O path.join poderia se substituido pelo caminho absoluto como string
          // O path.join aceita quantos argumentos quisermos, na ordem do caminho do arquivo a ser lido
-         (err,content) => {//-> segundo arqumento de fs.readFile. O primeiro argumento é sempre a variável pra erro
+         (err,content) => {//-> segundo arqumento de fs.readFile é uma função callback onde o primeiro argumento é sempre a variável pra erro
                         // e o segundo é o conteúdo do arquivo lido
           if(err){ 
             throw err
             //console.log("erro foi:: "+ err)
             // A mensagem de erro apareceu no console do node ( não do browser)
           }
-          res.end(content) // não precisa de else pois se der erro no if acima esta linha não será executada
+          //res.end(content) // não precisa de else pois se der erro no if acima esta linha não será executada
+          res.end(JSON.stringify(data))
 	 }
        )
     }
